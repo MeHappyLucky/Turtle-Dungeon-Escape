@@ -1,5 +1,5 @@
 # previously named as Turtle class
-# renamed to prevent future confusion
+# renamed to prevent future confusions
 
 class Player:
     """Player's Character"""

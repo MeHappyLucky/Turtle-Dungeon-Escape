@@ -1,3 +1,3 @@
 
 class Items:
-    """act as a list to be add to Turtle classes' attributes"""
+    """act as a list to be added to Turtle classes' attributes"""

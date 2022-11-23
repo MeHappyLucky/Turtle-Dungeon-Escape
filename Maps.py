@@ -1,3 +1,3 @@
 
 class Maps:
-    """Generate Map"""
+    """Generate Maps"""
