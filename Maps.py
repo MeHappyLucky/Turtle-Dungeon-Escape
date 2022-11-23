@@ -1,0 +1,3 @@
+
+class Maps:
+    """Generate Map"""
