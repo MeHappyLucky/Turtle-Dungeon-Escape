@@ -1,31 +1,30 @@
 
-from turtle import *
-
+import turtle as tur
+import time
 
 class Player:
     """Player's Character"""
-    def __init__(self, sight=10.0, speeds=6.0):
+    def __init__(self, sight=10.0, speeds=3.0):
         self.__sight = sight
         self.__speed = speeds
-        self.__pc = Turtle("turtle")
+        self.__pc = tur.Turtle("turtle")
         self.__pc.color("green")
         self.__pc.penup()
 
-    def move_up(self):
+    def moves(self):
+        self.__pc.forward(self.__speed)
+
+    def up(self):
         self.__pc.setheading(90)
-        self.__pc.forward(self.__speed)
 
-    def move_left(self):
+    def left(self):
         self.__pc.setheading(180)
-        self.__pc.forward(self.__speed)
 
-    def move_right(self):
+    def right(self):
         self.__pc.setheading(0)
-        self.__pc.forward(self.__speed)
 
-    def move_down(self):
+    def down(self):
         self.__pc.setheading(270)
-        self.__pc.forward(self.__speed)
 
     @property
     def sight(self):
@@ -46,30 +45,40 @@ class Player:
 
 class Maps:
     """Generate Maps"""
-    def __init__(self):
-        self.__screen = Screen()
-        self.__screen.setup(width=700, height=600)
-        self.__screen.bgcolor("black")
-        self.__screen.title("Turtle Dungeon Escape")
-        self.__screen.tracer(0)
 
-        game_is_on = True
-        while game_is_on:
-            self.__screen.update()
+    def __init__(self):
+        pass
 
 
 class Items:
-    """act as a nested dict to be added to Turtle classes' attributes"""
+    """to be added to Turtle/Player attributes"""
+
+
+class Points:
+    """(wip) items alt"""
 
 
 # ===================================== #
 # ======= Turtle Dungeon Escape ======= #
 # ===================================== #
-# print("Welcome to Turtle Dungeon Escape")
-# print("press (p) to play")
-# print("press (r) to see records")
-# print("press (x) to exit")
-# menu_prompt = input("What do you want to do?: ")
-# if menu_prompt == "p":
-    Player()
-    Maps()
+
+game_screen = tur.Screen()
+game_screen.setup(width=700, height=600)
+game_screen.bgcolor("black")
+game_screen.title("Turtle Dungeon Escape")
+game_screen.tracer(0)
+
+playcha = Player()
+
+game_is_on = True
+
+game_screen.onkey(playcha.up, "Up")
+game_screen.onkey(playcha.left, "Left")
+game_screen.onkey(playcha.right, "Right")
+game_screen.onkey(playcha.down, "Down")
+game_screen.listen()
+
+while game_is_on:
+    game_screen.update()
+    time.sleep(0.1)
+    playcha.moves()
