@@ -108,6 +108,8 @@ def face_down():
 def game_end(txt, color, font, size):
     for coin in playcha.pouch:
         coin.goto(999, 999)
+    for blocks in block_list:
+        blocks.goto(-999, -999)
     mapp.exits.goto(999, 999)
     playcha.pc.goto(-999, 999)
     ending = tur.Turtle()
@@ -196,7 +198,7 @@ game_screen.onkey(face_down, "Down")
 game_screen.listen()
 
 # BLOCK
-block_positions = [(100,100),(100,130)]
+block_positions = [(0, 100), (50, 100), (100, 100), (150, 100)]
 block_list = []
 for positions in block_positions:
     block = tur.Turtle("square")
@@ -207,15 +209,21 @@ for positions in block_positions:
     block.shapesize(stretch_wid=1, stretch_len=1)
     block_list.append(block)
 
+
+def block_collision():
+    for blocks in block_list:
+        if playcha.pc.distance(blocks) < 20.5:
+            playcha.speed -= playcha.speed
+            if playcha.pc.distance(blocks) < 18:
+                if playcha.pc.distance(blocks) < 12:
+                    game_end("Turtle Died to Suffocation!", "red", "Arial", 40)
+            else:
+                playcha.speed = original_speed
+
+
 # Game Main part
 while True:
-    for block in block_list:
-        if block.distance(visual) < 18:
-            playcha.speed = 0
-            if block.distance(visual) < 11:
-                game_end("Turtle Died to Suffocation!", "red", "Arial", 40)
-        else:
-            playcha.speed = original_speed
+    block_collision()
     visual.goto(playcha.pc.pos())
     for coin in playcha.pouch:
         coin.hideturtle()
@@ -233,4 +241,5 @@ while True:
             playcha.pouch.remove(coin)
     if playcha.pc.distance(mapp.exits) < 10:
         game_end("Turtle Escaped!", "blue", "Arial", 40)
+    playcha.pc.color("white", "#5A5A5A")
     playcha.moves()
