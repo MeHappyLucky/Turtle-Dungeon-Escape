@@ -16,8 +16,25 @@ class Maps:
         self.__exits = exits
         self.__block_list = []
         self.__block_positions = []
-        self.exits_gen()
+        self.__points_list = []
         self.get_map()
+        self.spawn_points()
+
+    def spawn_points(self):
+        for i in range(15):
+            point = tur.Turtle("circle")
+            point.speed(0)
+            point.penup()
+            point.color("yellow")
+            point.shapesize(stretch_wid=0.5, stretch_len=0.5)
+            x = random.randint(-330, 280)
+            y = random.randint(-330, 280)
+            point.setposition(x, y)
+            self.__points_list.append(point)
+
+    @property
+    def points_list(self):
+        return self.__points_list
 
     @property
     def block_list(self):
@@ -30,9 +47,6 @@ class Maps:
     @property
     def exits(self):
         return self.__exits
-
-    def exits_gen(self):
-        pass
 
     def get_map(self):
         with open("maps_data.csv", "r") as maps_data:

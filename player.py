@@ -5,22 +5,19 @@ import turtle as tur
 class Player:
     """Player's Character"""
 
-    def __init__(self, sight=40.0, speeds=2):
+    def __init__(self, sight=5.0, speeds=1.8):
         self.__sight = sight
         self.__speed = speeds
         self.__pc = tur.Turtle("circle")
         self.__pc.penup()
         self.__pc.color("white", "#5A5A5A")
-        self.__pc.setposition(0, 0)
-        self.__pc.shapesize(stretch_wid=self.sight, stretch_len=self.sight)
+        self.__pc.setposition(-40, 20)
         self.__pouch = []
-        self.__bought = []
 
-    def equip(self):
-        for items in self.__bought:
-            for stat in items.values():
-                self.__sight += stat[0]
-                self.__speed += stat[1]
+    def level_check(self, level):
+        if level != 0:
+            self.__sight += self.__sight*level*0.2
+            self.__speed += self.__speed*level*0.2
 
     def moves(self):
         self.__pc.forward(self.__speed)
