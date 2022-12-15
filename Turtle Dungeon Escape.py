@@ -256,4 +256,4 @@ while game_is_on == "yes":
                 playchar.pouch.remove(point)
         playchar.moves()
     except:
-        pass
+        game_end("exit")
