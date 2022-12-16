@@ -1,6 +1,6 @@
 # Turtle Dungeon Escape
 
-Turtle Dungeon Escape is a game where you will be playing as a turtle escaping a dungeon (a maze). The goal of the game is to collect points, in a game you can find points lying around where you should be able to collect them. You can also earn points fast by finding the exit. With these points you can upgrade your turtle to the next level, doing so will help you earn points at a faster pace.
+Turtle Dungeon Escape is a game where you will be playing as a turtle escaping a dungeon (a maze). The goal of the game is to collect points, in the game you can find points lying around where you should be able to collect them. You can also earn points fast by finding the exit. With these points you can upgrade your turtle to the next level, doing so will help you earn points at a faster pace.
 
 This game should consist of 4 .py file and 2 .csv files.
 * Turtle Dungeon Escape.py
